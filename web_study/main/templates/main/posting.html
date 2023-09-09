@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 보기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .post-content {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .post-actions {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>게시글</h1>
+        <div class="post-content">
+            <p><strong>제목:</strong> {{ post.postname }}</p>
+            <p><strong>내용:</strong> {{ post.contents }}</p>
+        </div>
+
+        <div>
+            <form method="POST" action="/comment">
+                <input type = "text" name = "comment">
+                <input type = "submit" value="댓글 입력">
+            </form>
+        </div>
+        <div class="post-actions">
+            <a href="/blog/">목록</a>
+            <a href="/blog/{{ post.pk }}/remove">삭제</a>
+        </div>
+    </div>
+</body>
+</html>
